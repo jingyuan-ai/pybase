@@ -4,7 +4,7 @@ CLI 功能测试
 
 import pytest
 from .common import (
-    cli_test, unit_test, integration_test,
+    cli_test, unit_test, integration_test, cli_helper,
     assert_cli_success, assert_cli_output_contains
 )
 

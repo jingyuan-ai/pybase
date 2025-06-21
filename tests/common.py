@@ -244,6 +244,9 @@ def unit_test(func):
     """标记为单元测试"""
     return pytest.mark.unit(func)
 
+def cpp_test(func):
+    """标记为 C++ 测试"""
+    return pytest.mark.cpp(func)
 
 def cli_test(func):
     """标记为 CLI 测试"""

@@ -1,5 +1,10 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = [
+    "setuptools>=61.0", 
+    "pybind11>=2.10.0", 
+    "numpy>=1.20.0",
+    "wheel"
+]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,16 +13,18 @@ version = "0.0.1"
 authors = [
   { name="damon", email="damon@china.com" },
 ]
-description = "A basic python package"
+description = "A basic python package with C++ extensions"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
 ]
 dependencies = [
-    "numpy",
+    "numpy>=1.20.0",
 ]
 
 [project.optional-dependencies]
@@ -32,10 +39,21 @@ test = [
     "pytest-mock>=3.10.0",
     "pytest-html>=3.1.0",
 ]
+cpp = [
+    "pybind11>=2.10.0",
+    "numpy>=1.20.0",
+]
 
 [project.scripts]
 pybase = "pybase.cli:cli"
 pybase-gui = "pybase.gui:main"
+
+[tool.setuptools]
+packages = ["pybase"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+pybase = ["*.h", "*.cpp"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -57,6 +75,7 @@ markers = [
     "unit: marks tests as unit tests",
     "cli: marks tests as CLI related",
     "gui: marks tests as GUI related",
+    "cpp: marks tests as C++ related",
 ]
 
 [tool.coverage.run]
