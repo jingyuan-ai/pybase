@@ -1,0 +1,3 @@
+[console_scripts]
+pybase = pybase.cli:cli
+pybase-gui = pybase.gui:main
